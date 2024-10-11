@@ -1,0 +1,128 @@
+.titulo {
+	text-align: center;
+	font-size: 30px;
+	font-family: Monospace;
+	text-decoration: underLine;
+	color: #1A0D64;
+}
+
+.logo {
+	width: 500px;
+}
+
+ul li {
+	list-style: none;
+}
+
+.home {
+	display: block;
+	background: #71727C;
+	color: #fff;
+	text-align: center;
+	margin: 20px;
+	padding: 10px 20px;
+	width: 100px;
+	text-decoration: none;
+}
+
+h3 {
+	width: 90%;
+}
+
+.img-fluid10 {
+	margin: auto;
+	height: 700px;
+	width: 1920px;
+}
+
+.wa {
+	margin: 50px;
+	width: 700px;
+	height: auto;
+	text-align: left;
+	border-radius: 7px;
+	background-color: 0080ff128255255;
+	padding: 20px;
+}
+
+.img-fluid2 {
+	margin: auto;
+	height: 200px;
+	width: 450px;
+}
+
+.img-fluid1 {
+	margin: auto;
+	height: 200px;
+	width: 200px;
+}
+
+/*contenido----------------*/
+
+/*carrusel----------------*/
+.banner_img {
+	margin: auto;
+	height: 500px;
+	width: 100%;
+}
+/*footer----------------*/
+footer {
+	color: white;
+	background: black;
+	padding: 20px;
+}
+
+.img1 {
+	margin: auto;
+	height: 400px;
+	width: 100%;
+}
+
+.tarjetas {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.text-tarjeta {
+	width: 80%;
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+.tarjeta {
+	width: 220px;
+	margin: 10px;
+	position: relative;
+	overflow: hidden;
+}
+
+.cont-tarjeta {
+	position: absolute;
+	padding: 10px;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	width: 200px;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: white;
+	transform: translateY(100%);
+	transition: 0.5s ease-out;
+}
+
+.tarjeta:hover .cont-tarjeta {
+	transform: translateY(0%);
+	transition: 0.5s ease-out;
+}
+
+.img-tarjeta {
+	width: 220px;
+	height: 150px;
+	display: block;
+}

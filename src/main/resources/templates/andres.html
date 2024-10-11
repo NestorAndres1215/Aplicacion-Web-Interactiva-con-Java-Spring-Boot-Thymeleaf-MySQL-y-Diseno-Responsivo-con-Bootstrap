@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E">
+<head>
+<meta charset="UTF-8">
+<nav th:fragment="andres"
+	class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">
+			<H5>TIENDA LANDIA</H5>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link active  "
+					th:href="@{/app/index}">INICIO</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle " href="#" id="navbarDropdown1"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> REGISTRO </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+						<a class="dropdown-item" th:href="@{/listar}">CLIENTE</a> <a
+							class="dropdown-item" th:href="@{/listar1}">EMPLEADO</a>
+					</div></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listar2}">PRODUCTOS</a></li>
+				<li class="nav-item"><a class="nav-link "
+					th:href="@{/consultar}">CENTRO DE CONSULTA</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<footer  th:fragment="nestor" class="text-center footer-style">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 footer-col">
+				<h3>HORARIO DE ATENCION:</h3>
+				<p>lunes a viernes</P>
+				<p>8:00 am a 10:00 pm</p>
+			</div>
+			<div class="col-md-4 footer-col">
+				<h3>Contáctenos:</h3>
+				<p>informes@andres.com</p>
+				<p>Cel/Wasap: 903-635-911</p>
+			</div>
+			<div class="col-md-4 footer-col">
+				<h3>Redes Sociales:</h3>
+				<a href="">Facebook</a><br> <a href="">Twitter</a><br> <a
+					href="">Youtube</a>
+			</div>
+		</div>
+	</div>
+	<div class="container1">
+		<center>
+			<p>Copyright © Nestor Andres.2021 , Diseñado por Andres</p>
+		</center>
+	</div>
+</footer>
+
+
+
+
+
+
