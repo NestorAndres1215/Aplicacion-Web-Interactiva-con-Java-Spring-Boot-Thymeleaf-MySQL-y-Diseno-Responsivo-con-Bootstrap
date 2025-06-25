@@ -1,81 +1,150 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title th:text="${titulo}">Insert title here</title>
-<link rel="stylesheet" th:href=@{/css/index.css}>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${titulo}">Insert title here</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	<link rel="stylesheet" th:href=@{/css/index.css}>
+	<link rel="stylesheet" th:href=@{/css/tabla.css}>
 </head>
+
 <body>
 
-<nav th:replace="andres :: andres"></nav>
-	<div class="container">
-		<center>
-			<h2 class="text-primary" th:text="${titulo}"></h2>
-		</center>
-		<br>
-		<a th:href="@{/form1}">Crear Empleado</a>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Email</th>
-					<th>fecha</th>
-					<th colspan="2" style="text-align:center;">Mantenimiento</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="empleado: ${empleados}">
-					<td>
-					 	<a class="btn btn-warning" 
-					 		th:href="@{/ver1/}+${empleado.id}"
-					 	th:text="${empleado.id}"></a>
-					</td>
-					<td th:text="${empleado.nombre}"></td>
-					<td th:text="${empleado.apellido}"></td>
-					<td th:text="${empleado.email}"></td>
-					<td th:text="${empleado.createAt}"></td>
-					<td>
-						<a class="btn btn-primary btn-xs" 
-						th:href="@{/form1/}+${empleado.id}" 
-						th:text="'Editar'"></a>
-					</td>
-					
-					<td>
-						<a class="btn btn-danger btn-xs" 
-						th:href="@{/eliminar1/}+${empleado.id}" 
-						th:text="'Eliminar'" 
-						onclick="return confirm('¿Está seguro de eliminar?');"></a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-	</div>
-<footer th:replace="andres:: nestor"></footer>
-	
-	
+	<nav th:replace="andres :: andres"></nav>
+	<div class="background-table">
+		<div class="floating-elements">
+			<div class="floating-circle"></div>
+			<div class="floating-circle"></div>
+			<div class="floating-circle"></div>
+			<div class="floating-circle"></div>
+		</div>
 
-	
-		<!-- JavaScript Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-		crossorigin="anonymous"></script>
-	
+		<div class="container">
+			<!-- Header Card -->
+			<div class="header-card animate-on-scroll">
+				<div class="title-icon">
+					<i class="fas fa-users"></i>
+				</div>
+				<h2 th:text="${titulo}">Gestión de Empleados</h2>
+				<p class="subtitle">
+					<i class="fas fa-chart-line"></i>
+					Panel de administración y control de personal
+				</p>
+				<a th:href="@{/form1}" class="btn-create">
+					<i class="fas fa-user-plus"></i>
+					Crear Nuevo Empleado
+				</a>
+			</div>
+
+			<!-- Table Card -->
+			<div class="table-card animate-on-scroll">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								<i class="fas fa-hashtag icon"></i>ID
+							</th>
+							<th>
+								<i class="fas fa-user icon"></i>Empleado
+							</th>
+							<th>
+								<i class="fas fa-envelope icon"></i>Email
+							</th>
+							<th>
+								<i class="fas fa-calendar icon"></i>Fecha Registro
+							</th>
+							<th>
+								<i class="fas fa-cogs icon"></i>Acciones
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="empleado: ${empleados}">
+							<td>
+								<a class="btn btn-id" th:href="@{/ver1/}+${empleado.id}" th:text="${empleado.id}">
+									<i class="fas fa-eye"></i>
+								</a>
+							</td>
+							<td>
+								<div class="employee-info">
+									<div class="employee-avatar"
+										th:text="${empleado.nombre.substring(0,1).toUpperCase()}">J</div>
+									<div class="employee-name" th:text="${empleado.nombre + ' ' + empleado.apellido}">
+									</div>
+								</div>
+							</td>
+							<td>
+								<i class="fas fa-at icon"></i>
+								<span th:text="${empleado.email}"></span>
+							</td>
+							<td>
+								<i class="fas fa-clock icon"></i>
+								<span th:text="${empleado.createAt}"></span>
+							</td>
+							<td>
+								<div class="action-buttons">
+									<a class="btn btn-view" th:href="@{/ver1/}+${empleado.id}">
+										<i class="fas fa-eye"></i>
+										Ver
+									</a>
+									<a class="btn btn-edit" th:href="@{/form1/}+${empleado.id}">
+										<i class="fas fa-edit"></i>
+										Editar
+									</a>
+									<a class="btn btn-delete" th:href="@{/eliminar1/}+${empleado.id}"
+										onclick="return confirm('¿Está seguro de eliminar este empleado?');">
+										<i class="fas fa-trash"></i>
+										Eliminar
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- Espacio entre la tabla y el footer -->
+	<div style="height: 40px;"></div>
+
+	<footer th:replace="andres:: nestor"></footer>
+
+	<script>
+		// Animaciones al hacer scroll
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				}
+			});
+		}, observerOptions);
+
+		// Observar elementos con animación
+		document.querySelectorAll('.animate-on-scroll').forEach(el => {
+			observer.observe(el);
+		});
+
+		// Efecto de entrada inicial
+		window.addEventListener('load', () => {
+			document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
+				setTimeout(() => {
+					el.classList.add('visible');
+				}, index * 200);
+			});
+		});
+
+	</script>
+	<!-- Puedes agregar aquí más secciones de pie de página o scripts adicionales si lo necesitas -->
+
+
 </body>
+
 </html>

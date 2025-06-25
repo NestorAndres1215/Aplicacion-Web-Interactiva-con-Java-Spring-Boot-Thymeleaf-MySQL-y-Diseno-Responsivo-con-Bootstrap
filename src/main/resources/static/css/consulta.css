@@ -1,0 +1,157 @@
+body {
+    background: #15508b;
+    color: #ffd700;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Card */
+.header-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.header-card:hover {
+    transform: translateY(-5px);
+}
+
+.title-icon {
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-15px);
+    }
+
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+.header-card h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Content Card */
+.content-card {
+    background: #2a578f;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: transform 0.3s ease;
+    margin: 30px 0;
+    /* Top and bottom margin */
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+}
+
+.content-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.content-card ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.content-card ul li {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.content-card ul li:before {
+    content: "•";
+    color: #ffd700;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .header-card {
+        padding: 30px 15px;
+    }
+
+    .header-card h1 {
+        font-size: 2.2rem;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
+    .content-card p,
+    .content-card ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-icon {
+        font-size: 3rem;
+    }
+
+    .header-card h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-card {
+        padding: 15px;
+    }
+
+    .content-card p,
+    .content-card ul li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

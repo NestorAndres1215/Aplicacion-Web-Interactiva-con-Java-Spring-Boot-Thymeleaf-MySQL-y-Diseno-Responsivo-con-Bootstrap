@@ -19,26 +19,23 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	
 	@Override
 	public List<Empleado> listarEmpleados() {
-		// TODO Auto-generated method stub
+	
 		return (List<Empleado>)empleadoDao.findAll();
 	}
 
 	@Override
 	@Transactional
 	public void crearEmpleados(Empleado empleado) {
-		// TODO Auto-generated method stub
 		empleadoDao.save(empleado);
 	}
 
 	@Override
 	public Empleado editarEmpleado(Long id) {
-		// TODO Auto-generated method stub
 		return empleadoDao .findById(id).orElse(null);
 	}
 
 	@Override
 	public void eliminarEmpleado(Long id) {
-		// TODO Auto-generated method stub
 		empleadoDao .deleteById(id);
 	}
 

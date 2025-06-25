@@ -17,26 +17,26 @@ public class ProductoServiceImpl implements IProductoService {
 	
 	@Override
 	public List<Producto> listarProducto() {
-		// TODO Auto-generated method stub
+		
 		return (List<Producto>)productoDao.findAll();
 	}
 
 	@Override
 	@Transactional
 	public void crearProducto(Producto producto) {
-		// TODO Auto-generated method stub
+	
 		productoDao.save(producto);
 	}
 
 	@Override
 	public Producto editarProducto(Long id) {
-		// TODO Auto-generated method stub
+	
 		return productoDao .findById(id).orElse(null);
 	}
 
 	@Override
 	public void eliminarProducto(Long id) {
-		// TODO Auto-generated method stub
+	
 		productoDao .deleteById(id);
 	}
 
