@@ -18,4 +18,7 @@ public interface IClienteService {
 		
 		//Método 4: Eliminar un cliente:
 		public void eliminarCliente(Long id);
+
+		//Metodo correo existe
+		public boolean correoExiste(String correo);
 }

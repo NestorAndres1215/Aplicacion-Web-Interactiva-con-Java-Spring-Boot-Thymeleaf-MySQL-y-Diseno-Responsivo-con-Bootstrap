@@ -40,4 +40,9 @@ public class ClienteServiceImpl implements IClienteService {
 		clienteDao.deleteById(id);
 	}
 
+	@Override
+	public boolean correoExiste(String correo) {
+		return clienteDao.existsByEmail(correo);
+	}
+
 }

@@ -30,7 +30,7 @@ public class ProductoServiceImpl implements IProductoService {
 
 	@Override
 	public Producto editarProducto(Long id) {
-	
+	System.out.println("id: " + id);
 		return productoDao .findById(id).orElse(null);
 	}
 

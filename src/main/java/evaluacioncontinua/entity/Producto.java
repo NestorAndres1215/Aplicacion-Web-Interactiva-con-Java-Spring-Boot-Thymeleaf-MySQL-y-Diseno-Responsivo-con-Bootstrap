@@ -1,6 +1,7 @@
 package evaluacioncontinua.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,33 +9,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "productos")
-public class Producto implements Serializable{
+public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(nullable = false, length = 100)
 	private String nombre;
+
+	@Column(nullable = false, length = 50)
 	private String categoria;
+
+	@Column(nullable = false)
 	private double precio;
-	
-	@PrePersist
-	public void prePersist() {
-		createAt=new Date();		
-	}
-	
-	
-	@Column(name = "create_at")
-	@Temporal(TemporalType.DATE)
-	private Date createAt;
-	
+
+	@Column(name = "create_at", nullable = false)
+	private LocalDate createAt;
+
 	private String foto;
+
+	public Producto() {
+	}
+
+	public Producto(String nombre, String categoria, double precio, String foto) {
+		this.nombre = nombre;
+		this.categoria = categoria;
+		this.precio = precio;
+		this.foto = foto;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -68,11 +77,11 @@ public class Producto implements Serializable{
 		this.precio = precio;
 	}
 
-	public Date getCreateAt() {
+	public LocalDate getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(Date createAt) {
+	public void setCreateAt(LocalDate createAt) {
 		this.createAt = createAt;
 	}
 
@@ -84,11 +93,15 @@ public class Producto implements Serializable{
 		this.foto = foto;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public String toString() {
+		return "Producto{" +
+				"id=" + id +
+				", nombre='" + nombre + '\'' +
+				", categoria='" + categoria + '\'' +
+				", precio=" + precio +
+				", createAt=" + createAt +
+				", foto='" + foto + '\'' +
+				'}';
 	}
-	
-	
-	
-	
 }

@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}">Insert title here</title>
-    <link rel="stylesheet" th:href=@{/css/index.css}>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/form.css}">
-
-
 </head>
 
 <body>
     <nav th:replace="andres :: andres"></nav>
+
     <div class="container">
         <div class="header-card animate-on-scroll">
             <div class="title-icon">
@@ -20,20 +19,24 @@
             </div>
             <h2 th:text="${titulo}">Crear Producto</h2>
         </div>
+
         <div class="form-card animate-on-scroll">
             <form th:action="@{/form2}" th:object="${producto}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" th:field="*{nombre}" class="form-control" id="nombre">
                 </div>
+
                 <div class="form-group">
                     <label for="categoria">Categoria</label>
                     <input type="text" th:field="*{categoria}" class="form-control" id="categoria">
                 </div>
+
                 <div class="form-group">
                     <label for="precio">Precio</label>
                     <input type="text" th:field="*{precio}" class="form-control" id="precio">
                 </div>
+
                 <div class="form-group custom-file-input">
                     <label for="file">Foto</label>
                     <label class="file-upload-btn" for="fileInput">
@@ -44,6 +47,7 @@
                         <span>No hay archivo seleccionado</span>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <input class="btn-primary" type="submit" value="Crear Producto">
                     <input type="hidden" th:field="*{id}">
@@ -52,11 +56,22 @@
         </div>
     </div>
 
-
     <footer th:replace="andres:: nestor"></footer>
 
+    <!-- (Opcional) SweetAlert2 por si lo usas luego -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+    <!-- Mostrar alerta si hay error -->
+    <script th:if="${error}" th:inline="javascript">
+        let mensaje = /*[[${error}]]*/ "Error";
+        Swal.fire({
+            icon: 'error',
+            title: '¡Archivo no permitido!',
+            text: mensaje,
+            confirmButtonText: 'Entendido',
+            confirmButtonColor: '#d33'
+        });
+    </script>
 
 
     <script>
@@ -88,7 +103,7 @@
             });
         });
 
-        // Preview file name
+        // Mostrar nombre del archivo seleccionado
         function previewFile(input) {
             const filePreview = document.getElementById('filePreview');
             if (input.files && input.files.length > 0) {
@@ -98,9 +113,6 @@
             }
         }
     </script>
-
-
-
 </body>
 
 </html>

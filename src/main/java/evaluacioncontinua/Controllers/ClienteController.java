@@ -50,6 +50,7 @@ public class ClienteController {
 			return "form";
 		}
 
+
 		if (!foto.isEmpty()) {
 			Path directorioRecursos = Paths.get("src//main//resources//static/uploads");
 			String rootPath = directorioRecursos.toFile().getAbsolutePath();
@@ -59,7 +60,6 @@ public class ClienteController {
 				Files.write(rutaCompleta, bytes);
 				cliente.setFoto(foto.getOriginalFilename());
 			} catch (Exception e) {
-
 				e.printStackTrace();
 			}
 		}
